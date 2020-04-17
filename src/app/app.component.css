@@ -1,0 +1,35 @@
+div {
+  text-align: center;
+}
+
+#signPad {
+  border: 1px solid black;
+  width: 300px;
+
+  background-color: gray;
+  display: inline-block;
+}
+
+.hide {
+  display: none;
+}
+.center {
+}
+
+video {
+  width: 99%;
+  height: 200px;
+  border: 1px solid black;
+  background-color: white;
+}
+
+button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}

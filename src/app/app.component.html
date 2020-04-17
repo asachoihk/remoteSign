@@ -1,0 +1,55 @@
+<h4>PoC of using WebRTC for remote signature and video conf.</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div *ngIf="!isClient && !peer">
+        <button (click)="createRoom()">Create a Request</button>
+      </div>
+      <div *ngIf="!isClient && peer">
+        Share This Path: {{getPath()}}
+      </div>
+
+      <button (click)="makeACall()" *ngIf="isClient">Make a Call</button>
+    </div>
+    <div class="col-6 center" [ngClass]="{'hide': !peer}">
+      <div id="signPad">
+        <h4>
+          {{isClient ? 'Sign Here' : 'Client Signature'}}
+        </h4>
+
+        <div style="background-color: white">
+          <signature-pad
+            [options]="signaturePadOptions"
+            (onEndEvent)="drawComplete()"
+          >
+          </signature-pad>
+        </div>
+        <div style="display: flow;" *ngIf="isClient">
+          <button (click)="clear()">
+            Clear
+          </button>
+        </div>
+      </div>
+
+      <!-- This content will take up 3/12 (or 1/4) of the container -->
+    </div>
+    <div
+      class="col-6"
+      style="background-color: gray"
+      [ngClass]="{'hide': !peer}"
+    >
+      <h4>Local Video</h4>
+      <video #videoElementLocal id="videoElementLocal"></video>
+      <!-- This content will take up 6/12 (or 1/2) of the container -->
+    </div>
+    <div
+      class="col-6"
+      style="background-color: gray"
+      [ngClass]="{'hide': !peer}"
+    >
+      <h4>Remote Video</h4>
+      <video #videoElementRemote id="videoElementRemote"></video>
+      <!-- This content will take up 6/12 (or 1/2) of the container -->
+    </div>
+  </div>
+</div>
